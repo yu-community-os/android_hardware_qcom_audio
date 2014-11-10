@@ -2,9 +2,7 @@ ifeq (msm8916,$(QCOM_HARDWARE_VARIANT))
 
 MY_LOCAL_PATH := $(call my-dir)
 
-ifeq ($(BOARD_USES_LEGACY_ALSA_AUDIO),true)
-include $(MY_LOCAL_PATH)/legacy/Android.mk
-else
+ifneq ($(BOARD_USES_LEGACY_ALSA_AUDIO),true)
 ifneq ($(filter mpq8092,$(TARGET_BOARD_PLATFORM)),)
 include $(MY_LOCAL_PATH)/hal_mpq/Android.mk
 else
