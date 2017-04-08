@@ -50,7 +50,7 @@ AUDIO_FEATURE_ENABLED_AUDIOSPHERE := true
 ##AUDIO_FEATURE_FLAGS
 
 #Audio Specific device overlays
-DEVICE_PACKAGE_OVERLAYS += hardware/qcom/audio/configs/common/overlay
+DEVICE_PACKAGE_OVERLAYS += hardware/qcom/audio/$(QCOM_HARDWARE_VARIANT)/configs/common/overlay
 
 # Audio configuration file
 ifeq ($(TARGET_USES_AOSP), true)
@@ -58,29 +58,29 @@ PRODUCT_COPY_FILES += \
     device/qcom/common/media/audio_policy.conf:system/etc/audio_policy.conf
 else
 PRODUCT_COPY_FILES += \
-    hardware/qcom/audio/configs/msmfalcon/audio_policy.conf:system/etc/audio_policy.conf
+    hardware/qcom/audio/$(QCOM_HARDWARE_VARIANT)/configs/msmfalcon/audio_policy.conf:system/etc/audio_policy.conf
 endif
 
 PRODUCT_COPY_FILES += \
-    hardware/qcom/audio/configs/msmfalcon/audio_output_policy.conf:system/vendor/etc/audio_output_policy.conf \
-    hardware/qcom/audio/configs/msmfalcon/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    hardware/qcom/audio/configs/msmfalcon/mixer_paths.xml:system/etc/mixer_paths.xml \
-    hardware/qcom/audio/configs/msmfalcon/mixer_paths_wcd9335.xml:system/etc/mixer_paths_wcd9335.xml \
-    hardware/qcom/audio/configs/msmfalcon/mixer_paths_i2s.xml:system/etc/mixer_paths_i2s.xml \
-    hardware/qcom/audio/configs/msmfalcon/audio_platform_info.xml:system/etc/audio_platform_info.xml \
-    hardware/qcom/audio/configs/msmfalcon/audio_platform_info_i2s.xml:system/etc/audio_platform_info_i2s.xml \
-    hardware/qcom/audio/configs/msmfalcon/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
-    hardware/qcom/audio/configs/msmfalcon/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
-    hardware/qcom/audio/configs/msmfalcon/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt
+    hardware/qcom/audio/$(QCOM_HARDWARE_VARIANT)/configs/msmfalcon/audio_output_policy.conf:system/vendor/etc/audio_output_policy.conf \
+    hardware/qcom/audio/$(QCOM_HARDWARE_VARIANT)/configs/msmfalcon/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    hardware/qcom/audio/$(QCOM_HARDWARE_VARIANT)/configs/msmfalcon/mixer_paths.xml:system/etc/mixer_paths.xml \
+    hardware/qcom/audio/$(QCOM_HARDWARE_VARIANT)/configs/msmfalcon/mixer_paths_wcd9335.xml:system/etc/mixer_paths_wcd9335.xml \
+    hardware/qcom/audio/$(QCOM_HARDWARE_VARIANT)/configs/msmfalcon/mixer_paths_i2s.xml:system/etc/mixer_paths_i2s.xml \
+    hardware/qcom/audio/$(QCOM_HARDWARE_VARIANT)/configs/msmfalcon/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    hardware/qcom/audio/$(QCOM_HARDWARE_VARIANT)/configs/msmfalcon/audio_platform_info_i2s.xml:system/etc/audio_platform_info_i2s.xml \
+    hardware/qcom/audio/$(QCOM_HARDWARE_VARIANT)/configs/msmfalcon/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
+    hardware/qcom/audio/$(QCOM_HARDWARE_VARIANT)/configs/msmfalcon/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
+    hardware/qcom/audio/$(QCOM_HARDWARE_VARIANT)/configs/msmfalcon/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt
 
 #XML Audio configuration files
 ifeq ($(USE_XML_AUDIO_POLICY_CONF), 1)
 ifeq ($(TARGET_USES_AOSP), true)
 PRODUCT_COPY_FILES += \
-    $(TOPDIR)hardware/qcom/audio/configs/common/audio_policy_configuration.xml:/system/etc/audio_policy_configuration.xml
+    $(TOPDIR)hardware/qcom/audio/$(QCOM_HARDWARE_VARIANT)/configs/common/audio_policy_configuration.xml:/system/etc/audio_policy_configuration.xml
 else
 PRODUCT_COPY_FILES += \
-    $(TOPDIR)hardware/qcom/audio/configs/msmfalcon/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml
+    $(TOPDIR)hardware/qcom/audio/$(QCOM_HARDWARE_VARIANT)/configs/msmfalcon/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml
 endif
 PRODUCT_COPY_FILES += \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:/system/etc/a2dp_audio_policy_configuration.xml \
@@ -92,7 +92,7 @@ endif
 
 # Listen configuration file
 PRODUCT_COPY_FILES += \
-    hardware/qcom/audio/configs/msmfalcon/listen_platform_info.xml:system/etc/listen_platform_info.xml
+    hardware/qcom/audio/$(QCOM_HARDWARE_VARIANT)/configs/msmfalcon/listen_platform_info.xml:system/etc/listen_platform_info.xml
 
 # Reduce client buffer size for fast audio output tracks
 PRODUCT_PROPERTY_OVERRIDES += \
